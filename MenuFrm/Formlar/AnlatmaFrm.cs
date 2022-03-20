@@ -36,9 +36,16 @@ namespace MenuFrm
             KelimeCagırma();
             takımsırası++;
             btnPas.Text = pasHakkı.ToString();
+            if (lblT1skor.Text == "0" & btnPas.Text != "0")
+            {
+                btnDecline.Enabled = false;
+            }else
+            {
+                btnDecline.Enabled=true;    
+            }
         }
 
-        int geriSayim=20;
+        int geriSayim=60;
         private void timer1_Tick(object sender, EventArgs e)
         {
             geriSayim -= 1;
@@ -99,11 +106,7 @@ namespace MenuFrm
                 }
                 
             }
-            else
-            {
-                skor1--;
-                lblT2skor.Text = skor1.ToString();
-            }
+           
 
         }
 
@@ -115,6 +118,7 @@ namespace MenuFrm
 
             var a = r.Next(0, 9);
 
+            
 
             switch (a)
             {
@@ -189,6 +193,27 @@ namespace MenuFrm
             }
         }
 
+        private void button1_Click(object sender, EventArgs e)
+                {
+            
+                    pasHakkı--;
+            
+
+                    if (pasHakkı > 0)
+                    {
+                        btnPas.Text = pasHakkı.ToString();
+                        KelimeCagırma();
+                    }
+                    else
+                    {
+                        btnDecline.Enabled = true;
+                        btnPas.Enabled = false;
+                        btnPas.BackColor = Color.Black;
+                    }
+            
+
+
+                } //// pas
 
         static Tuple<string, string, string, string> myTuple1 = new Tuple<string, string, string, string>("HECE", "Kelime", "Harf", "Okumak");
         static Tuple<string, string, string, string> myTuple2 = new Tuple<string, string, string, string>("KÜSMEK", "Darılmak", "Kızmak", "Tartışmak");
@@ -199,24 +224,7 @@ namespace MenuFrm
         static Tuple<string, string, string, string> myTuple7 = new Tuple<string, string, string, string>("HALÜSİNASYON", "Hayal", "Gerçek", "Görmek");
         static Tuple<string, string, string, string> myTuple8 = new Tuple<string, string, string, string>("ANTİKA", "Müzayede", "Zengin", "Eski");
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-            
-            pasHakkı--;
-            btnPas.Text = pasHakkı.ToString();
-
-            if (pasHakkı > -1)
-            {
-                KelimeCagırma();
-            }
-            else
-            {
-                MessageBox.Show("Pas hakkı yoktur");
-            }
-            
-
-
-        }
+       
     }
         
 
